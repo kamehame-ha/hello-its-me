@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello its me - User not found</title>
+    <link rel="icon" type="image/x-svg" href="/logo.svg">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/essential/colors.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Functions -->
+    <script type="module" src="/js/functions/get-cookie.js"></script>
+    <script type="module" src="/js/functions/set-cookie.js"></script>
+    <script type="module" src="/js/functions/secured-request.js"></script>
+    <script type="module" src="/js/functions/error-log.js"></script>
+    
+    <!-- Session Handler -->
+    <script type="module" src="/js/session/session-script.js"></script>
+</head>
+<body>
+    <div id="background" class="background bg-var"></div>
+    <div id="not-found" class="main-container h-screen w-full flex flex-col">
+        <div class="navbar">
+            <div class="navbar-container px-[25px] sm:px-[50px] h-[60px] items-center w-full justify-between sm:justify-end flex">
+                <div class="navbar hidden sm:flex">
+                    <ul id="nav-list" class="nav-list flex gap-[15px]">
+                        <li class="nav-item cursor-pointer"><a href="https://github.com/kamehame-ha">Github</a></li>
+                        <li class="nav-item font-semibold cursor-pointer"><a href="/login">Sign In</a></li>
+                    </ul>
+                    <ul id="user-nav-list" class="user-nav-list gap-[15px] hidden">
+                        <li class="nav-item cursor-pointer"><a href="https://github.com/kamehame-ha">Github</a></li>
+                        <li class="nav-item cursor-pointer"><a id="edit" href="">Edit your card</a></li>
+                        <li id="logout" class="nav-item cursor-pointer">Logout</li>
+                        <li class="nav-item font-semibold cursor-pointer"><a id="user" href=""></a></li>
+                    </ul>
+                </div>
+                <p class="text font-medium cursor-pointer sm:hidden"><a href="/">Hello it's me</a></p>
+                <label for="nav" class="mobile-navbar-icon flex sm:hidden">
+                    <img src="/img/icons/menu.svg" class="mobile-navbar-icon-open cursor-pointer">
+                    <img src="/img/icons/menu-close.svg" class="mobile-navbar-icon-close cursor-pointer hidden">
+                </label>
+            </div>
+            <input type="checkbox" class="mobile-navbar-check absolute opacity-0" name="nav" id="nav">
+            <div class="mobile-navbar">
+                <ul id="mobile-nav-list" class="mobile-nav-list flex flex-col gap-[15px] text-right mr-[25px]">
+                    <li class="nav-item cursor-pointer">Github</li>
+                    <li class="nav-item font-semibold cursor-pointer"><a id="user" href="/login">Sign In</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content w-full flex flex-col items-center justify-center px-[25px] sm:px-0">
+            <div class="card w-full sm:w-[600px] h-[345px] bg-[#1E1E1E] rounded-[20px]">
+                <div class="card-content p-[20px] w-full flex gap-2 flex-col items-center justify-center h-full text-white">
+                    <h1 class="text-var text-8xl font-medium wobble-hor-bottom">404</h1>
+                    <p class="text text-2xl">User not found...</p>
+                    <p class="text-var"><a href="/">Go back to the main page</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer py-6">
+            <p class="text-sm text-center"><span class="font-medium"><a href="/">hello its me</a></span> by <span class="font-medium"><a href="https://github.com/kamehame-ha" target="_blank">kameHame HA</a></span> - All rights reserved</p>
+        </div>
+    </div>
+    <!-- Main Script -->
+    <script type="module" src="/js/script.js"></script>
+</body>
+</html>

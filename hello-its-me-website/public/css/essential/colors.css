@@ -1,0 +1,66 @@
+/* Text */
+.text-cyan { color: #06b6d4; }
+.text-green { color: #22c55e; }
+.text-indigo { color: #6366f1; }
+.text-pink { color: #ec4899; }
+.text-red { color: #ef4444; }
+.text-sky { color: #0ea5e9; }
+.text-teal { color: #14b8a6; }
+.text-yellow { color: #eab308; }
+.text-blue { color: #3b82f6; }
+
+/* Stroke */
+.stroke-cyan { stroke: #06b6d4; }
+.stroke-green { stroke: #22c55e; }
+.stroke-indigo { stroke: #6366f1; }
+.stroke-pink { stroke: #ec4899; }
+.stroke-red { stroke: #ef4444; }
+.stroke-sky { stroke: #0ea5e9; }
+.stroke-teal { stroke: #14b8a6; }
+.stroke-yellow { stroke: #eab308; }
+.stroke-blue { stroke: #3b82f6; }
+
+/* Outline */
+.outline-cyan { outline-color: #06b6d4; }
+.outline-green { outline-color: #22c55e; }
+.outline-indigo { outline-color: #6366f1; }
+.outline-pink { outline-color: #ec4899; }
+.outline-red { outline-color: #ef4444; }
+.outline-sky { outline-color: #0ea5e9; }
+.outline-teal { outline-color: #14b8a6; }
+.outline-yellow { outline-color: #eab308; }
+.outline-blue { outline-color: #3b82f6; }
+
+/* Border */
+.border-cyan { border-color: #06b6d4; }
+.border-green { border-color: #22c55e; }
+.border-indigo { border-color: #6366f1; }
+.border-pink { border-color: #ec4899; }
+.border-red { border-color: #ef4444; }
+.border-sky { border-color: #0ea5e9; }
+.border-teal { border-color: #14b8a6; }
+.border-yellow { border-color: #eab308; }
+.border-blue { border-color: #3b82f6; }
+
+/* Background */
+.background-cyan { background-image: url("/img/backgrounds/cyan.svg"); }
+.background-green { background-image: url("/img/backgrounds/green.svg"); }
+.background-indigo { background-image: url("/img/backgrounds/indigo.svg"); }
+.background-pink { background-image: url("/img/backgrounds/pink.svg"); }
+.background-red { background-image: url("/img/backgrounds/red.svg"); }
+.background-sky { background-image: url("/img/backgrounds/sky.svg"); }
+.background-teal { background-image: url("/img/backgrounds/teal.svg"); }
+.background-yellow { background-image: url("/img/backgrounds/yellow.svg"); }
+.background-blue { background-image: url("/img/backgrounds/blue.svg"); }
+
+/* Default */
+.bg-var { background-image: url("/img/backgrounds/default.svg"); }
+.outline-var { outline-color: white; }
+.border-var { border-color: white; }
+.stroke-var { stroke: white; }
+.text-var { color: white }
+
+.background {
+    -webkit-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
+}

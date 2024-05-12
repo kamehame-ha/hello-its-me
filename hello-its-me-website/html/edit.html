@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello its me - Show yourself to the world</title>
+    <link rel="icon" type="image/x-svg" href="/logo.svg">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/essential/colors.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Functions -->
+    <script type="module" src="/js/functions/get-cookie.js"></script>
+    <script type="module" src="/js/functions/set-cookie.js"></script>
+    <script type="module" src="/js/functions/secured-request.js"></script>
+    <script type="module" src="/js/functions/error-log.js"></script>
+    
+    <!-- Session Handler -->
+    <script type="module" src="/js/session/session-script.js"></script>
+    
+    <!-- Get User -->
+    <script type="module" src="/js/user/get-user.js"></script>
+
+    <!-- User Fetch -->
+    <script type="module" src="/js/fetch-mode/get-color.js"></script>
+    
+    <!-- User Edit -->
+    <script type="module" src="/js/edit-mode/edit-avatar.js"></script>
+    <script type="module" src="/js/edit-mode/edit-bio.js"></script>
+    <script type="module" src="/js/edit-mode/edit-color.js"></script>
+    <script type="module" src="/js/edit-mode/edit-nickname.js"></script>
+    <script type="module" src="/js/edit-mode/edit-picture.js"></script>
+    <script type="module" src="/js/edit-mode/edit-socials.js"></script>
+    <script type="module" src="/js/edit-mode/edit-status.js"></script>
+
+    <!-- Libs -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="background" class="background bg-var"></div>
+    <div id="site" class="main-container h-screen w-full flex flex-col">
+        <div id="error-log" class="error-log-container absolute h-auto w-screen error-log-base error-log-inactive">
+            <div id="error-log-box" class="error-log-box mx-[15px] h-[60px] rounded-[10px] px-[15px] py-[15px] flex items-center gap-[15px] error-log-shadow">
+                <img src="/img/icons/status/error.svg" id="error-log-icon" class="icon">
+                <p class="text text-white" id="error-log-text">Text</p>
+            </div>
+        </div>
+        <div class="navbar">
+            <div class="navbar-container px-[25px] sm:px-[50px] h-[60px] items-center w-full justify-between sm:justify-end flex">
+                <div class="navbar hidden sm:flex">
+                    <ul id="nav-list" class="nav-list flex gap-[15px]">
+                        <li class="nav-item cursor-pointer"><a href="https://github.com/kamehame-ha">Github</a></li>
+                        <li class="nav-item font-semibold cursor-pointer"><a href="/login">Sign In</a></li>
+                    </ul>
+                    <ul id="user-nav-list" class="user-nav-list gap-[15px] hidden">
+                        <li class="nav-item cursor-pointer"><a href="https://github.com/kamehame-ha">Github</a></li>
+                        <li class="nav-item cursor-pointer"><a id="edit" href="">Edit your card</a></li>
+                        <li id="logout" class="nav-item cursor-pointer">Logout</li>
+                        <li class="nav-item font-semibold cursor-pointer"><a id="user" href=""></a></li>
+                    </ul>
+                </div>
+                <p class="text font-medium cursor-pointer sm:hidden"><a href="/">Hello it's me</a></p>
+                <label for="nav" class="mobile-navbar-icon flex sm:hidden">
+                    <img src="/img/icons/menu.svg" class="mobile-navbar-icon-open cursor-pointer">
+                    <img src="/img/icons/menu-close.svg" class="mobile-navbar-icon-close cursor-pointer hidden">
+                </label>
+            </div>
+            <input type="checkbox" class="mobile-navbar-check absolute opacity-0" name="nav" id="nav">
+            <div class="mobile-navbar">
+                <ul id="mobile-nav-list" class="mobile-nav-list flex flex-col gap-[15px] text-right mr-[25px]">
+                    <li class="nav-item cursor-pointer">Github</li>
+                    <li class="nav-item font-semibold cursor-pointer"><a id="user" href="/login">Sign In</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content" class="content relative w-full flex flex-col items-center justify-center px-[25px] sm:px-0">
+            <div id="mobile-block" class="mobile-block flex-col hidden">
+                <p class="text-white text-center text-xl">Card editing is not possible on mobile devices</p>
+            </div>
+            <div id="color-scheme-editor" class="color-scheme-editor absolute bg-[#1E1E1E] px-3 py-2 rounded-[10px] hidden">
+                <p class="text text-white text-sm mb-2 text-center">Choose color scheme you like:</p>
+                <div class="colors flex gap-3">
+                    <div id="cyan" class="cyan flex flex-col gap-1 items-center text-center justify-center cursor-pointer">
+                        <div class="background-cyan bg-cover rounded-full h-[40px] w-[40px]"></div>
+                        <p class="text-xs text-white">Cyan</p>
+                    </div>
+                    <div id="green" class="green flex flex-col gap-1 items-center text-center justify-center cursor-pointer">
+                        <div class="background-green bg-cover rounded-full h-[40px] w-[40px]"></div>
+                        <p class="text-xs text-white">Green</p>
+                    </div>
+                    <div id="indigo" class="indigo flex flex-col gap-1 items-center text-center justify-center cursor-pointer">
+                        <div class="background-indigo bg-cover rounded-full h-[40px] w-[40px]"></div>
+                        <p class="text-xs text-white">Indigo</p>
+                    </div>
+                    <div id="pink" class="pink flex flex-col gap-1 items-center text-center justify-center cursor-pointer">
+                        <div class="background-pink bg-cover rounded-full h-[40px] w-[40px]"></div>
+                        <p class="text-xs text-white">Pink</p>
+                    </div>
+                    <div id="red" class="red flex flex-col gap-1 items-center text-center justify-center cursor-pointer">
+                        <div class="background-red bg-cover rounded-full h-[40px] w-[40px]"></div>
+                        <p class="text-xs text-white">Red</p>
+                    </div>
+                    <div id="sky" class="sky flex flex-col gap-1 items-center text-center justify-center cursor-pointer">
+                        <div class="background-sky bg-cover rounded-full h-[40px] w-[40px]"></div>
+                        <p class="text-xs text-white">Sky</p>
+                    </div>
+                    <div id="blue" class="blue flex flex-col gap-1 items-center text-center justify-center cursor-pointer">
+                        <div class="background-blue bg-cover rounded-full h-[40px] w-[40px]"></div>
+                        <p class="text-xs text-white">Blue</p>
+                    </div>
+                    <div id="teal" class="teal flex flex-col gap-1 items-center text-center justify-center cursor-pointer">
+                        <div class="background-teal bg-cover rounded-full h-[40px] w-[40px]"></div>
+                        <p class="text-xs text-white">Teal</p>
+                    </div>
+                    <div id="yellow" class="yellow flex flex-col gap-1 items-center text-center justify-center cursor-pointer">
+                        <div class="background-yellow bg-cover rounded-full h-[40px] w-[40px]"></div>
+                        <p class="text-xs text-white">Yellow</p>
+                    </div>
+                </div>
+            </div>
+            <div id="card" class="card hidden w-full sm:w-[600px] bg-[#1E1E1E] relative rounded-[20px] text-center">
+                <p id="info" class="info absolute w-full self-center text-white top-[-35px]">Click on element to edit</p>
+                <div id="icon-edit" class="icon-edit p-[20px] w-full h-full text-white text-start">
+                    <div class="top flex items-center justify-center text-center flex-col gap-0">
+                        <p id="search-text" class="text-var">Select social to edit or search to add new one</p>
+                        <div class="input flex flex-col w-fit static">
+                            <label id="search-input-text" for="input" class="text-var text-xs font-semibold relative top-2 ml-[7px] px-[3px] bg-[#1E1E1E] w-fit">Search:</label>
+                            <input id="search" type="text" placeholder="Ex. riotgames" name="input" class="border-var input px-[10px] py-[11px] text-xs bg-[#1E1E1E] border-2 rounded-[5px] w-[300px] focus:outline-none placeholder:text-white/50">
+                        </div>
+                        <p id="result-text" class="text mt-[15px]">Result:</p>
+                        <div id="result" class="mt-[10px] flex flex-auto flex-grow-0 flex-wrap justify-center flex-shrink-0 gap-[12px] h-fit"></div>
+                        <p id="icon-box-edit-text" class="text mt-[15px]">Your socials:</p>
+                        <div id="icon-box-edit" class="icons mt-[10px] flex flex-auto flex-grow-0 flex-wrap justify-center flex-shrink-0 gap-[12px] h-fit"></div>
+                        <p id="icon-edit-back" class="note-text text-sm text-var cursor-pointer mt-[15px]">Go Back</p>
+                    </div>
+                </div>
+                <div id="card-content" class="card-content p-[20px] w-full h-full text-white text-start">
+                    <div id="card-top" class="card-top-section h-[100px] text-center flex justify-between gap-1">
+                        <div class="left flex relative">
+                            <label for="avatar" class="edit-hover cursor-pointer absolute w-[102px] h-[102px] top-[-1px] left-[-1px] rounded-full hover:bg-black/50">
+                                <div class="content flex items-center justify-center text-xs h-full w-full">
+                                    <p class="text">Change</p>
+                                </div>
+                            </label>
+                            <input accept="image/*" type="file" id="avatar" class="absolute opacity-0 w-[102px] h-[102px] top-[-1px] left-[-1px] z-[-1] cursor-pointer">
+                            <div id="avatar-bg" class="avatar bg-var outline-var h-[100px] w-[100px] bg-cover bg-center rounded-full outline outline-4 outline-offset-[-3px] outline-white"></div>
+                            <div class="name-section h-[100px] flex flex-col justify-center text-left ml-[15px] w-fit">
+                                <p class="text text-xs italic font-light">hello, it's me</p>
+                                <input title="Change nickname" type="text" name="name" size="15" id="nickname" class="nickname cursor-pointer text-var text-lg font-medium p-0 focus:outline-none bg-[#1E1E1E]" readonly>
+                                <input title="Change status" type="text" name="name" id="status" class="cursor-pointer text-sm font-light p-0 focus:outline-none leading-[20px] h-[20px] bg-[#1E1E1E]" readonly>
+                            </div>
+                        </div>
+                        <div id="right" class="right">
+                            <div id="icon-box" class="flex w-[180px] flex-auto flex-grow-0 flex-wrap justify-end flex-shrink-0 gap-[12px] h-fit"></div>
+                            <div class="bts flex gap-2 mt-3 justify-end">
+                                <div id="edit-icons" class="text-var stroke-var flex gap-1 cursor-pointer w-fit">
+                                    <p class="text font-medium text-xs">Edit socials</p>
+                                </div>
+                                <div id="icon-show" class="text-var stroke-var flex gap-1 cursor-pointer w-fit">
+                                    <p id="icon-text" class="text font-medium text-xs">Show all</p>
+                                    <svg id="icon-arrow" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.5 3.125V11.875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M11.875 7.5L7.5 11.875L3.125 7.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="user-card-mid" class="user-card-mid-section mt-[15px] flex flex-col">
+                        <textarea rows="1" title="Edit biography" class="bio m-0 cursor-pointer font-light text-sm resize-none w-full overflow-hidden p-0 focus:outline-none leading-[20px] bg-[#1E1E1E]" id="bio" readonly></textarea>
+                        <div id="bio-show" class="bio-show text-var stroke-var flex gap-1 cursor-pointer mt-1 w-fit">
+                            <p id="bio-text" class="text font-medium text-xs">Expand Bio</p>
+                            <svg id="bio-arrow" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.5 3.125V11.875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M11.875 7.5L7.5 11.875L3.125 7.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="user-card-bottom-section mt-[10px] flex h-[125px] relative">
+                        <label for="picture" class="edit-hover cursor-pointer absolute w-full h-[125px] rounded-[10px] hover:bg-black/50">
+                            <div class="content flex items-center justify-center text-xs h-full w-full">
+                                <p class="text">Change picture</p>
+                            </div>
+                        </label>
+                        <input accept="image/*" type="file" id="picture" class="absolute opacity-0 h-full w-full z-[-1] cursor-pointer">
+                        <div id="picture-bg" class="bg-var h-full w-full bg-cover bg-center rounded-[10px]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer py-6">
+            <p class="text-sm text-center"><span class="font-medium"><a href="/">hello its me</a></span> by <span class="font-medium"><a href="https://github.com/kamehame-ha" target="_blank">kameHame HA</a></span> - All rights reserved</p>
+        </div>
+    </div>
+    <!-- Main Script -->
+    <script type="module" src="/js/script.js"></script>
+</body>
+</html>
