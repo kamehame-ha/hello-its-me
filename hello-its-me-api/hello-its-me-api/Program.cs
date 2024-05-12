@@ -13,7 +13,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("https://*.kame.pro", "http://141.144.226.69:8080", "http://10.0.0.221:8080", "http://10.0.0.221", "http://*.kame.pro", "http://*.kto-pytal.pl")
+            policy.WithOrigins("YOUR IP")
                 .SetIsOriginAllowedToAllowWildcardSubdomains()
                 .AllowAnyHeader()
                 .AllowAnyMethod();
@@ -59,4 +59,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run("http://10.0.0.221:5003/");
+app.Run("YOUR IP");
